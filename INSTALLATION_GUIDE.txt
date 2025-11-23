@@ -1,0 +1,350 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    REWARDZONE - INSTALLATION GUIDE                           ║
+║                         Complete Earning Platform                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📦 WHAT'S INCLUDED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Complete PHP/MySQL Application
+✅ User Authentication System (Signup, Login, Password Reset)
+✅ Payment Integration (JazzCash & EasyPaisa)
+✅ Referral System with Commission Tracking
+✅ 20+ Mission Types (Daily, Weekly, Premium)
+✅ Interactive Spin Wheel
+✅ Withdrawal System
+✅ Admin Panel
+✅ Mobile Responsive Design
+✅ Security Features (CSRF, SQL Injection, XSS Protection)
+✅ Database Structure (MySQL)
+✅ Full Documentation
+
+🚀 QUICK START GUIDE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: EXTRACT FILES
+----------------------
+Extract RewardZone folder to your web server:
+  • XAMPP: C:/xampp/htdocs/RewardZone
+  • WAMP: C:/wamp64/www/RewardZone  
+  • Linux: /var/www/html/RewardZone
+
+STEP 2: CREATE DATABASE
+-----------------------
+1. Open phpMyAdmin: http://localhost/phpmyadmin
+2. Click "New" to create database
+3. Name it: rewardzone_db
+4. Set Collation: utf8mb4_unicode_ci
+5. Click "Create"
+6. Select the database
+7. Go to "Import" tab
+8. Choose database.sql file from RewardZone folder
+9. Click "Go" to import
+
+STEP 3: CONFIGURE APPLICATION
+------------------------------
+Edit config/config.php:
+
+1. Update Site URL:
+   define('SITE_URL', 'http://localhost/RewardZone/');
+
+2. Update Database (if needed):
+   Edit config/database.php:
+   - Host: localhost
+   - Database: rewardzone_db
+   - Username: root
+   - Password: (leave empty for XAMPP/WAMP)
+
+3. Configure Payment APIs (later):
+   - JazzCash credentials
+   - EasyPaisa credentials
+
+4. Configure Email (optional):
+   - SMTP settings for Gmail
+
+STEP 4: SET PERMISSIONS (Linux/Mac only)
+-----------------------------------------
+chmod -R 755 /var/www/html/RewardZone
+chmod -R 777 /var/www/html/RewardZone/logs
+
+STEP 5: ACCESS THE APPLICATION
+-------------------------------
+Open browser and navigate to:
+  • Homepage: http://localhost/RewardZone/
+  • Admin Panel: http://localhost/RewardZone/admin/
+
+DEFAULT ADMIN CREDENTIALS:
+  Username: admin
+  Password: admin123
+  
+⚠️ IMPORTANT: Change admin password immediately after first login!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 FILE STRUCTURE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RewardZone/
+│
+├── index.php                 → Landing Page
+├── login.php                 → User Login
+├── register.php              → User Registration
+├── dashboard.php             → User Dashboard
+├── missions.php              → Missions Page
+├── spin.php                  → Spin Wheel
+├── withdrawals.php           → Withdrawals
+├── database.sql              → Database Structure
+├── README.md                 → Full Documentation
+├── .htaccess                 → Apache Configuration
+│
+├── admin/                    → Admin Panel
+│   ├── index.php            → Admin Dashboard
+│   ├── users.php            → User Management
+│   ├── withdrawals.php      → Withdrawal Management
+│   └── transactions.php     → Transaction History
+│
+├── api/                      → API Endpoints
+│   ├── complete_mission.php → Mission Completion
+│   ├── spin.php             → Spin Wheel
+│   └── payment_callback.php → Payment Callbacks
+│
+├── assets/                   → Static Assets
+│   ├── css/                 → Stylesheets
+│   │   ├── style.css        → Main Styles
+│   │   ├── auth.css         → Authentication Pages
+│   │   └── dashboard.css    → Dashboard Styles
+│   ├── js/                  → JavaScript
+│   │   ├── main.js          → Main Scripts
+│   │   └── dashboard.js     → Dashboard Scripts
+│   └── images/              → Images
+│
+├── config/                   → Configuration
+│   ├── config.php           → Main Config
+│   └── database.php         → DB Connection
+│
+├── includes/                 → PHP Classes
+│   ├── User.php             → User Management
+│   ├── Mission.php          → Mission System
+│   ├── Payment.php          → Payment Processing
+│   ├── Withdrawal.php       → Withdrawal Handling
+│   └── SpinWheel.php        → Spin Wheel Logic
+│
+└── logs/                     → Error Logs
+    └── error.log            → Application Errors
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔧 CONFIGURATION DETAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAYMENT INTEGRATION:
+--------------------
+JazzCash:
+  1. Sign up at: https://sandbox.jazzcash.com.pk/
+  2. Get: Merchant ID, Password, Integrity Salt
+  3. Update in config/config.php
+  
+EasyPaisa:
+  1. Register at: https://easypay.easypaisa.com.pk/
+  2. Get: Store ID, Secret Key
+  3. Update in config/config.php
+
+EMAIL CONFIGURATION:
+-------------------
+For Gmail SMTP:
+  1. Enable 2-Factor Authentication
+  2. Generate App Password
+  3. Update SMTP settings in config/config.php
+
+COMMISSION STRUCTURE:
+--------------------
+  • Pack Price: PKR 350
+  • Owner Commission: PKR 200 (on activation)
+  • Active Inviter: PKR 150 (if inviter is premium)
+  • Inactive Inviter: PKR 30 (if inviter is free)
+  • Min Withdrawal: PKR 670
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎮 HOW IT WORKS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FOR USERS:
+----------
+1. Sign up for free account
+2. Complete profile (earn bonus)
+3. Upgrade to Premium (PKR 350) - Optional
+4. Complete missions to earn rewards
+5. Use daily spin wheel
+6. Invite friends (earn commission)
+7. Request withdrawal (min PKR 670)
+
+FOR ADMINS:
+-----------
+1. Login to admin panel
+2. Monitor users and activities
+3. Approve/reject payment activations
+4. Process withdrawal requests
+5. Manage missions and settings
+6. Export reports
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔐 SECURITY FEATURES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ CSRF Token Protection
+✅ SQL Injection Prevention (PDO Prepared Statements)
+✅ XSS Protection (Input Sanitization)
+✅ Password Hashing (Bcrypt)
+✅ Server-Side Validation
+✅ Session Security
+✅ Secure Database Queries
+✅ Anti-Fraud Mechanisms
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROBLEM: Database Connection Error
+SOLUTION: 
+  • Check credentials in config/database.php
+  • Ensure MySQL is running
+  • Verify database exists
+
+PROBLEM: Blank White Page
+SOLUTION:
+  • Enable error display in config/config.php:
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+  • Check Apache/PHP error logs
+
+PROBLEM: Payment Not Working
+SOLUTION:
+  • Verify API credentials
+  • Check sandbox/production mode
+  • Review logs/error.log
+
+PROBLEM: Email Not Sending
+SOLUTION:
+  • Use Gmail App Password
+  • Check SMTP settings
+  • Verify port 587 is open
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 TESTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. TEST USER REGISTRATION:
+   - Create new account
+   - Verify email validation
+   - Check database entry
+
+2. TEST LOGIN:
+   - Login with new account
+   - Verify dashboard access
+
+3. TEST MISSIONS:
+   - Complete a mission
+   - Check balance update
+   - Verify transaction record
+
+4. TEST SPIN WHEEL:
+   - Perform daily spin
+   - Check reward credited
+   - Verify 24hr cooldown
+
+5. TEST WITHDRAWAL:
+   - Request withdrawal
+   - Check admin panel
+   - Approve/reject request
+
+6. TEST REFERRAL:
+   - Get referral link
+   - Register new user with link
+   - Verify commission
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 DEPLOYMENT TO PRODUCTION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Upload files via FTP/cPanel
+2. Create MySQL database on server
+3. Import database.sql
+4. Update config/config.php with production settings
+5. Update SITE_URL to your domain
+6. Set file permissions (755 for folders, 644 for files)
+7. Configure SSL certificate (HTTPS)
+8. Update payment APIs to production mode
+9. Change admin password
+10. Test all features thoroughly
+
+RECOMMENDED HOSTING:
+  • Shared: Namecheap, Hostinger, Bluehost
+  • VPS: DigitalOcean, Linode, Vultr
+  • Requirements: PHP 7.4+, MySQL 5.7+, 1GB RAM min
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ FEATURES CHECKLIST:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ User Authentication (Signup, Login, Password Reset)
+✅ Payment Integration (JazzCash, EasyPaisa)
+✅ Referral System with Auto Commission
+✅ 20+ Mission Types
+✅ Daily Spin Wheel
+✅ Withdrawal System (PKR 670 min)
+✅ Admin Panel (Complete Management)
+✅ Email Notifications
+✅ Level & XP System
+✅ Daily Streak Rewards
+✅ Mobile Responsive
+✅ Security Features
+✅ Transaction History
+✅ Social Proof Toasts
+✅ Interactive Dashboard
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 TIPS FOR SUCCESS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Start with free version to test
+• Configure payment gateways properly
+• Monitor admin panel regularly
+• Process withdrawals promptly
+• Keep admin password secure
+• Backup database regularly
+• Update PHP/MySQL versions
+• Monitor error logs
+• Test on mobile devices
+• Promote referral system
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 SUPPORT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+For issues:
+  1. Review this guide thoroughly
+  2. Check README.md for detailed docs
+  3. Review database.sql structure
+  4. Check error logs
+  5. Test in local environment first
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 YOU'RE ALL SET!
+
+RewardZone is now ready to use. Start by:
+  1. Accessing http://localhost/RewardZone/
+  2. Creating a test user account
+  3. Exploring the dashboard
+  4. Logging into admin panel
+  5. Customizing settings
+
+Good luck with your earning platform! 🚀
+
+Version: 1.0
+Built with ❤️ for earning enthusiasts
+
+═══════════════════════════════════════════════════════════════════════════════

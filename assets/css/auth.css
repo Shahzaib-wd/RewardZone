@@ -1,0 +1,46 @@
+/* Auth Pages Styling */
+.auth-page {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 100vh;
+}
+
+.auth-card {
+    background: rgba(30, 41, 59, 0.95);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.auth-header h2 {
+    color: #f8fafc;
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: #cbd5e1;
+}
+
+.form-label {
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.form-control {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid #334155;
+    color: #f8fafc;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    background: rgba(15, 23, 42, 0.7);
+    border-color: #6366f1;
+    color: #f8fafc;
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+}
+
+.auth-footer a {
+    color: #6366f1;
+    font-weight: 500;
+}

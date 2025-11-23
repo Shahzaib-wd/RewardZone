@@ -1,0 +1,7 @@
+[24-Nov-2025 00:50:35 Asia/Karachi] Connection error: SQLSTATE[HY000] [1049] Unknown database 'rewardzone_db'
+[24-Nov-2025 00:50:35 Asia/Karachi] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\RewardZone\includes\User.php:311
+Stack trace:
+#0 C:\xampp\htdocs\RewardZone\includes\User.php(40): User->usernameExists()
+#1 C:\xampp\htdocs\RewardZone\register.php(47): User->register()
+#2 {main}
+  thrown in C:\xampp\htdocs\RewardZone\includes\User.php on line 311
